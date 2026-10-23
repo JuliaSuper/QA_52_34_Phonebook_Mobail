@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class ContactDto {
+public class Contact {
     private String id;
     private String name;
     private String lastName;

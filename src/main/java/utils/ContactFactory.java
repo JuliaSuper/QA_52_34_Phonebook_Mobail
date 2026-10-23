@@ -1,12 +1,12 @@
 package utils;
 
-import dto.ContactDto;
+import dto.Contact;
 import net.datafaker.Faker;
 
 public class ContactFactory {
     static Faker faker = new Faker();
-    public static ContactDto positiveContact(){
-        return ContactDto.builder()
+    public static Contact positiveContact(){
+        return Contact.builder()
                 .name(faker.name().firstName())
                 .lastName(faker.name().lastName())
                 .email(faker.internet().emailAddress())

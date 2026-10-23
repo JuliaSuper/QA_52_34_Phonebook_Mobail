@@ -1,0 +1,37 @@
+package screens;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.TestException;
+import org.testng.annotations.AfterMethod;
+
+import java.time.Duration;
+
+public class SplashScreen extends BaseScreen {
+    public SplashScreen(AppiumDriver driver) {
+        super(driver);
+    }
+
+    @AndroidFindBy(id = "com.sheygam.contactapp:id/version_text")
+    WebElement versionApp;
+
+    public boolean validateVersion(String text){
+        return isTextInElementPresent(versionApp, text);
+    }
+
+    public void goToRegistrationScreen(){
+        try {
+          new WebDriverWait(driver, Duration.ofSeconds(10))
+                  .until(ExpectedConditions.presenceOfElementLocated
+                          (By.id("com.sheygam.contactapp:id/action_bar")));
+        }catch (TestException e){
+            e.printStackTrace();
+            System.out.println("Created exception");
+        }
+    }
+
+}
