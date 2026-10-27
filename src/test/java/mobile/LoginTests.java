@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import screens.ContactsScreen;
+import screens.ErrorScreen;
 import screens.RegistrationLoginScreen;
 import screens.SplashScreen;
 import static utils.PropertiesReader.*;
@@ -25,5 +26,14 @@ public class LoginTests extends TestBase{
         registrationLoginScreen.typeFormLoginRegistration(user);
         registrationLoginScreen.clickBtnLogin();
         Assert.assertTrue(new ContactsScreen(driver).isBtnAddContactPresent());
+    }
+
+    @Test
+    public void loginNegativeTest(){
+        user.setPassword("juli123!!");
+        registrationLoginScreen.typeFormLoginRegistration(user);
+        registrationLoginScreen.clickBtnLogin();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("Login or Password incorrect"));
     }
 }
