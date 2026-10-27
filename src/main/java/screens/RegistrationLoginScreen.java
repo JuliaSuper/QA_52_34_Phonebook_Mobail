@@ -27,7 +27,10 @@ public class RegistrationLoginScreen extends BaseScreen{
         inputPassword.sendKeys(user.getPassword());
     }
 
-    public void clicBtnRegistration(){
+    public void clickBtnRegistration(){
         clickWait(btnRegistration);
+    }
+    public void clickBtnLogin(){
+        clickWait(btnLogin);
     }
 }
